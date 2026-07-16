@@ -1,13 +1,19 @@
 
 
 function getComputerChoice() {
-    let rand = Math.random();
+    let computerChoice = Math.random();
 
-    if (rand > 0 && rand < 1/3) {
+    if (computerChoice > 0 && rand < 1/3) {
         return("Rock");
-    }else if (rand >= 1/3 && rand < 2/3) {
+    }else if (computerChoice >= 1/3 && rand < 2/3) {
         return("Paper");
     }else {
         return("Scissors");
     };
 };
+
+function getHumanChoice() {
+    let playerChoice = prompt("What's Your Play?");
+
+    return(playerChoice);
+}
