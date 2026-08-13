@@ -5,10 +5,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Rock Paper Scissors</title>
 
-        <script type="module" src="/script.js"></script>
+        <script type="module" src="/script.js" defer></script>
+
+        <link rel="stylesheet" href="./styles.css">
     </head>
 
     <body>
-        
+        <div class="player-choices">
+            <button class="rock-button">Rock</button>
+            <button class="paper-button">Paper</button>
+            <button class="scissors-button">Scissors</button>
+        </div>
+        <div class="round-output">
+            <h1 class="output-text">What will you choose?</h1>
+        </div>
     </body>
 </html>

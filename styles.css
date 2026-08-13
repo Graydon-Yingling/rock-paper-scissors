@@ -1,0 +1,40 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    color: white;
+    font-size: 48px;
+    border-width: 10px;
+    border-color: black;
+}
+
+.rock-button {
+    background-color: red;
+}
+
+.paper-button {
+    background-color: blue;
+}
+
+.scissors-button {
+    background-color: green;
+}
+
+.player-choices {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 65vh;
+}
+
+.round-output {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 33vh;
+}
