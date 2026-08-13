@@ -69,12 +69,6 @@ function playGame() {
         }
     };
 
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-
     console.log(`Your Score: ${humanScore}`);
     console.log(`Computer Score: ${computerScore}`);
 
@@ -86,5 +80,3 @@ function playGame() {
         alert("It's a draw!")
     };
 }
-
-playGame();
