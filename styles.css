@@ -35,6 +35,30 @@ button {
 .round-output {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     height: 33vh;
+}
+
+.score-text {
+    text-decoration: underline;
+}
+
+.scoreboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 450px;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-evenly;
+    width: 450px;
+}
+
+.computer-score,
+.player-score {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
