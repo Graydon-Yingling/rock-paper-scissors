@@ -1,4 +1,20 @@
+let humanScore = 0;
+let computerScore = 0;
+
+const rockButton = document.querySelector('.rock-button');
+const paperButton = document.querySelector('.paper-button');
+const scissorsButton = document.querySelector('.scissors-button');
+rockButton.addEventListener('click', () => playRound("rock"));
+paperButton.addEventListener('click', () => playRound("paper"));
+scissorsButton.addEventListener('click', () => playRound("scissors"));
+
+const gameMessage = document.querySelector('.output-text');
+
+const computerScoreText = document.querySelector('.computer-number');
+const humanScoreText = document.querySelector('.player-number');
+
 function getComputerChoice() {
+
     let computerChoice = Math.random();
 
     if (computerChoice >= 0 && computerChoice < 1/3) {
@@ -10,73 +26,88 @@ function getComputerChoice() {
     };
 };
 
-function getHumanChoice() {
-    let playerChoice = prompt("Rock, Paper, or Scissors?");
+function updateScore(scoreToUpdate) {
 
-    return(playerChoice);
-}
-
-function playGame() {
-
-    let humanChoice;
-    let computerChoice;
-
-    let humanScore = 0;
-    let computerScore = 0;
-
-    function playRound() {
-
-        humanChoice = getHumanChoice().toLowerCase();
-        computerChoice = getComputerChoice();
-
-        switch (humanChoice) {
-            case "rock":
-                if (computerChoice === "paper") {
-                    computerScore++;
-                    console.log("Computer chose paper, you lose this round!");
-                }else if (computerChoice === "scissors") {
-                    humanScore++;
-                    console.log("Computer chose scissors, you win this round!");
-                }else {
-                    console.log("Computer chose rock as well, It's a draw this round!");
-                };
-                break;
-            case "paper":
-                if (computerChoice === "scissors") {
-                    computerScore++;
-                    console.log("Computer chose scissors, you lose this round!");
-                }else if (computerChoice === "rock") {
-                    humanScore++;
-                    console.log("Computer chose rock, you win this round!");
-                }else {
-                    console.log("Computer chose paper as well, It's a draw this round!");
-                };
-                break;
-            case "scissors":
-                if (computerChoice === "rock") {
-                    computerScore++;
-                    console.log("Computer chose rock, you lose this round!");
-                }else if (computerChoice === "paper") {
-                    humanScore++;
-                    console.log("Computer chose paper, you win this round!");
-                }else {
-                    console.log("Computer chose scissors as well, It's a draw this round!");
-                };
-                break;
-            default:
-                console.log("Something broke, go fix it.");
-                break;
-        }
+    if (scoreToUpdate === "computerScore") {
+        computerScore++;
+        computerScoreText.textContent = computerScore.toString();
+        gameMessage.textContent = "Your Opponent Won This Round!"
+    }else if (scoreToUpdate === "humanScore") {
+        humanScore++;
+        humanScoreText.textContent = humanScore.toString();
+        gameMessage.textContent = "You won this round!"
+    } else if (scoreToUpdate === "tie") {
+        gameMessage.textContent = "This Round Was A Tie!"
     };
 
-    console.log(`Your Score: ${humanScore}`);
-    console.log(`Computer Score: ${computerScore}`);
 
-    if (computerScore > humanScore) {
-        alert("Computer Wins!");
-    }else if (humanScore > computerScore) {
-        alert("You win!");
-    }else {
-        alert("It's a draw!")
-    };
-}
+    if (computerScore >= 5) {
+        document.body.replaceChildren()
+        document.body.style.backgroundColor = "red";
+        document.body.style.display = 'flex';
+        document.body.style.justifyContent = 'center';
+        document.body.style.alignItems = 'center';
+        document.body.style.height = '100vh';
+        document.body.style.margin = '0';
+        const heading = document.createElement('h1');
+        heading.textContent = 'YOU LOSE!';
+        document.body.appendChild(heading);
+
+        setTimeout(() => {
+            alert("Reload Page to Play Again");
+        }, 5000);
+    }else if (humanScore >= 5) {
+        document.body.replaceChildren();
+        document.body.style.backgroundColor = "green";
+        document.body.style.display = 'flex';
+        document.body.style.justifyContent = 'center';
+        document.body.style.alignItems = 'center';
+        document.body.style.height = '100vh';
+        document.body.style.margin = '0';
+        const heading = document.createElement('h1');
+        heading.textContent = 'YOU WIN!';
+        document.body.appendChild(heading);
+
+        setTimeout(() => {
+            alert("Reload Page to Play Again");
+        }, 5000);
+    }
+};
+
+function playRound(humanChoice) {
+
+    let computerChoice = getComputerChoice();
+
+    switch (humanChoice) {
+        case "rock":
+            if (computerChoice === "paper") {
+                updateScore("computerScore");
+            }else if (computerChoice === "scissors") {
+                updateScore("humanScore");
+            }else {
+                updateScore("tie");
+            };
+            break;
+        case "paper":
+            if (computerChoice === "scissors") {
+                updateScore("computerScore");
+            }else if (computerChoice === "rock") {
+                updateScore("humanScore");
+            }else {
+                updateScore("tie");
+            };
+            break;
+        case "scissors":
+            if (computerChoice === "rock") {
+                updateScore("computerScore");
+            }else if (computerChoice === "paper") {
+                updateScore("humanScore");
+            }else {
+                updateScore("tie");
+            };
+            break;
+        default:
+            alert("Something broke, go fix it.");
+            break;
+    }
+};
