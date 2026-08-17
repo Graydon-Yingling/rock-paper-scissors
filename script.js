@@ -53,9 +53,6 @@ function updateScore(scoreToUpdate) {
         heading.textContent = 'YOU LOSE!';
         document.body.appendChild(heading);
 
-        setTimeout(() => {
-            alert("Reload Page to Play Again");
-        }, 5000);
     }else if (humanScore >= 5) {
         document.body.replaceChildren();
         document.body.style.backgroundColor = "green";
@@ -68,9 +65,6 @@ function updateScore(scoreToUpdate) {
         heading.textContent = 'YOU WIN!';
         document.body.appendChild(heading);
 
-        setTimeout(() => {
-            alert("Reload Page to Play Again");
-        }, 5000);
     }
 };
 
